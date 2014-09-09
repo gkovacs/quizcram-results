@@ -116,20 +116,60 @@ avgForUser = (username, user_info) ->
       output = uinfo
   return output.average_score
 
+exec = require(\shelljs).exec
+
+ttest_rel = (list_a, list_b) ->
+  return exec("python ttest_rel.py '" + JSON.stringify(list_a) + "' '" + JSON.stringify(list_b) +  "'").output
+
 do ->
+  #console.log ttest([1,2,3], [4,5])
+  #return
   [question_info_1, user_info_1] = toQuestionAndUserInfo('quiz1.tsv')
   [question_info_2, user_info_2] = toQuestionAndUserInfo('quiz2.tsv')
+  #[question_info_exam1, user_info_exam1]= toQuestionAndUserInfo('exam1.tsv')
+  #console.log [x.username for x in user_info_2]
+  #return
   conditions = {
     'v-kaliao': 0
     'v-wancha': 1
     'v-mingll': 0
     'v-junfu': 1
-    'v-huayan': 0
+    #'v-huayan': 0
     'v-yumli': 1
     'cz1054858201@hotmail.com': 1
     'ztt0903@foxmail.com': 0
     'canjian ning': 0
+    'limuyang08@gmail.com': 1
+    'jinhl08@sina.com': 1
+    'chenyuipc@163.com': 0
+    #'350163805@qq.com': 0
+    #'limilimin@sina.com': 1
+    #'124955162@qq.com': 1
+    'v-huiczh': 0
+    'v-yaozh': 1
+    'v-honyan': 0
+    #'v-danmia': 1
+    'v-zhpan': 0
+    'v-minwei': 1
+    'v-xiozh': 0
   }
+  scores_invideo = []
+  scores_quizcram = []
+  for username,condition of conditions
+    score_part1 = avgForUser(username, user_info_1)
+    score_part2 = avgForUser(username, user_info_2)
+    score_invideo = switch condition
+    | 0 => score_part1
+    | 1 => score_part2
+    score_quizcram = switch condition
+    | 0 => score_part2
+    | 1 => score_part1
+    console.log 'username: ' + username + ' quizcram: ' + score_quizcram + ' invideo: ' + score_invideo
+    scores_quizcram.push score_quizcram
+    scores_invideo.push score_invideo
+  #console.log JSON.stringify(scores_quizcram)
+  #console.log JSON.stringify(scores_invideo)
+  #return
   #usernames = [uinfo.username for uinfo in user_info_2]
   usernames0 = [username for username,condition of conditions when condition == 0]
   usernames1 = [username for username,condition of conditions when condition == 1]
@@ -141,6 +181,11 @@ do ->
   console.log 'invideo_part2:' + average(invideo_part2)
   quizcram_part2 = [avgForUser(user, user_info_2) for user in usernames0]
   console.log 'quizcram_part2:' + average(quizcram_part2)
+  invideo_all = invideo_part1 ++ invideo_part2
+  console.log 'invideo_all:' + average(invideo_all)
+  quizcram_all = quizcram_part1 ++ quizcram_part2
+  console.log 'quizcram_all:' + average(quizcram_all)
+  console.log ttest_rel(scores_quizcram, scores_invideo)
   #for username in usernames0
   #  uinfo1 = uinfoForUser username, user_info_1
   #  uinfo2 = uinfoForUser username, user_info_2
