@@ -152,7 +152,13 @@ do ->
     #'v-danmia': 1
     'v-zhpan': 0
     'v-minwei': 1
-    'v-xiozh': 0
+    #'v-xiozh': 0
+    #'liuxiaoyue08@gmail.com': 1
+    'v-pharth': 0
+    #'v-jiason': 1
+    'v-tiajin': 0
+    'v-zhma': 0
+    'huyechang15@163.com': 1
   }
   scores_invideo = []
   scores_quizcram = []
@@ -175,8 +181,8 @@ do ->
     score_exam_quizcram = switch condition
     | 0 => score_exam2
     | 1 => score_exam1
-    #console.log 'username: ' + username + ' quizcram: ' + score_quizcram + ' invideo: ' + score_invideo
-    console.log 'username: ' + username + ' quizcram_exam: ' + score_exam_quizcram + ' invideo_exam: ' + score_exam_invideo
+    console.log 'username: ' + username + ' quizcram: ' + score_quizcram + ' invideo: ' + score_invideo
+    #console.log 'username: ' + username + ' quizcram_exam: ' + score_exam_quizcram + ' invideo_exam: ' + score_exam_invideo
     #console.log 'username: ' + username + ' score_exam1: ' + score_exam1
     scores_quizcram.push score_quizcram
     scores_invideo.push score_invideo
