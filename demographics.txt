@@ -1,0 +1,29 @@
+root = exports ? this
+
+root.demographics = demographics = {
+  'minh1': 21, male, coursera
+  'angelicachavez': 25 female no moocs psych 1
+  #'nathanjones1': 0
+  'marcellaweiss1': 1 22 female no moocs
+  'angilewis1': 0 37 female udemy 
+  #'sakshisundaram1': 1
+  'johnnyxu': 1 19  male edx
+  'jiawenli': 1 21 female edx and stanford online
+  'lorant': 0  19 male none
+  'annereynolds': 0 23 female other mooc
+  'emilytruong': 1  20 female none
+  'dinianapiekutowski': 1 20 female none
+  'dorondorfman': 1 32 male none
+  'yanyan': 0     18 male coursera
+  'celinajackson': 1     19 female coursera
+  'crystalromero': 0     20 female none
+  'michelleloya': 0       19 female coursera
+  'ngocbui': 1            19 female khan academy+codeacademy
+  'jonathangriffin': 0     18 male none
+  #'sarahsimmons': 1
+  'sydneyosifeso': 0      19 female none
+}
+
+12 female, 6 male
+ages = [21, 25, 22, 37, 19, 21, 19, 23, 20, 20, 32, 18, 19, 20, 19, 19, 18, 19]
+
