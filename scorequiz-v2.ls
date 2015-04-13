@@ -1,6 +1,9 @@
 root = exports ? this
 
-require! \fs
+require! {
+  fs
+  yamlfile
+}
 
 {sum, average} = require \prelude-ls
 
@@ -144,7 +147,8 @@ do ->
   [question_info_exam1, user_info_exam2]= toQuestionAndUserInfo('quiz2v2p2.tsv')
   #console.log [x.username for x in user_info_2]
   #return
-  {conditions} = require \./conditionsv2
+  conditions = yamlfile.readFileSync 'conditionsv2.yaml'
+  # {conditions} = require \./conditionsv2
   scores_invideo = []
   scores_quizcram = []
   scores_invideo_exam = []
